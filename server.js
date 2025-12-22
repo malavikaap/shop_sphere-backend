@@ -42,18 +42,14 @@ const app = express();
 
 app.use(express.json());
 
-// Allow both local + deployed frontend
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "http://localhost:3000",
-      "https://shopsphere-frontend-five.vercel.app"
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+app.use(cors({
+  origin: [
+    "https://shopsphere-frontend-amber.vercel.app",
+    "http://localhost:5173"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 
 // MongoDB Connection
 mongoose
